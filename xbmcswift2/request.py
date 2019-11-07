@@ -9,9 +9,9 @@
     :license: GPLv3, see LICENSE for more details.
 '''
 from xbmcswift2.common import unpickle_args
-import urlparse
+from urllib import parse as urlparse
 try:
-    from urlparse import parse_qs
+    from urllib.parse import parse_qs
 except ImportError:
     from cgi import parse_qs
 

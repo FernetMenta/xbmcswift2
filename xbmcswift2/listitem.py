@@ -24,7 +24,7 @@ class ListItem(object):
             'label': label,
             'label2': label2,
             'iconImage': icon,
-            'thumbnailImage': thumbnail,
+#            'thumbnailImage': thumbnail,
             'path': path,
         }
         #kwargs = dict((key, val) for key, val in locals().items() if val is
@@ -32,7 +32,7 @@ class ListItem(object):
         kwargs = dict((key, val) for key, val in kwargs.items()
                       if val is not None)
         self._listitem = xbmcgui.ListItem(**kwargs)
-
+        self._listitem.setArt({'thumb': thumbnail})
         # xbmc doesn't make getters available for these properties so we'll
         # keep track on our own
         self._icon = icon

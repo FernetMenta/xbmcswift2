@@ -11,8 +11,8 @@ from xbmcswift2 import xbmc, xbmcaddon, xbmcplugin, xbmcgui
 from xbmcswift2.storage import TimedStorage
 from xbmcswift2.logger import log
 from xbmcswift2.constants import VIEW_MODES, SortMethod
-from common import Modes, DEBUG_MODES
-from request import Request
+from .common import Modes, DEBUG_MODES
+from .request import Request
 
 
 
@@ -202,7 +202,7 @@ class XBMCMixin(object):
         value = self.addon.getSetting(id=key)
         if converter is str:
             return value
-        elif converter is unicode:
+        elif converter is str:
             return value.decode('utf-8')
         elif converter is bool:
             return value == 'true'
@@ -365,7 +365,7 @@ class XBMCMixin(object):
             item = {}
             succeeded = False
 
-        if isinstance(item, basestring):
+        if isinstance(item, str):
             # caller is passing a url instead of an item dict
             item = {'path': item}
 
@@ -493,7 +493,7 @@ class XBMCMixin(object):
             self.add_items(items)
         if sort_methods:
             for sort_method in sort_methods:
-                if not isinstance(sort_method, basestring) and hasattr(sort_method, '__len__'):
+                if not isinstance(sort_method, str) and hasattr(sort_method, '__len__'):
                     self.add_sort_method(*sort_method)
                 else:
                     self.add_sort_method(sort_method)

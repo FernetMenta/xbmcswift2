@@ -8,7 +8,7 @@
     :license: GPLv3, see LICENSE for more details.
 '''
 import urllib
-import urllib2
+from urllib import request as urllib2
 try:
     import cPickle as pickle
 except ImportError:
@@ -60,7 +60,7 @@ def pickle_dict(items):
     ret = {}
     pickled_keys = []
     for key, val in items.items():
-        if isinstance(val, basestring):
+        if isinstance(val, str):
             ret[key] = val
         else:
             pickled_keys.append(key)
